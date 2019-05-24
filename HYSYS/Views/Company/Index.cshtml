@@ -1,0 +1,9 @@
+﻿@model HYSYS.ViewModels.CompanyVMs.CompanyListVM
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.CompanyCode" />
+<wt:textbox field="Searcher.CompanyName" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" />

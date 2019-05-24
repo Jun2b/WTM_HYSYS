@@ -1,0 +1,12 @@
+﻿@model HYSYS.ViewModels.CompanyVMs.CompanyVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.CompanyCode" />
+<wt:display field="Entity.CompanyName" />
+<wt:display field="Entity.Remark" />
+</wt:row>
+    <wt:row align=" AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>
