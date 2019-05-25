@@ -11,6 +11,9 @@ namespace HYSYS
     {
         public DbSet<Company> Companies { get; set; }
         public DbSet<MyUser> MyUsers { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DataContext(string cs, DBTypeEnum dbtype)
              : base(cs, dbtype)

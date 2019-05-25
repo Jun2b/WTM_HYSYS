@@ -1,0 +1,12 @@
+﻿@model HYSYS.ViewModels.LocationVMs.LocationVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.LocationCode" />
+<wt:display field="Entity.LocationName" />
+<wt:display field="Entity.Remark" />
+</wt:row>
+    <wt:row align=" AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

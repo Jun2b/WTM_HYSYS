@@ -1,0 +1,10 @@
+﻿@model HYSYS.ViewModels.CustomerVMs.CustomerListVM
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.CustomerCode" />
+<wt:textbox field="Searcher.CustomerName" />
+<wt:textbox field="Searcher.PhoneNumber" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" />

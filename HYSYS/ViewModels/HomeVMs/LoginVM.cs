@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using HYSYS.Models;
 using WalkingTec.Mvvm.Core;
 
 namespace HYSYS.ViewModels.HomeVMs
@@ -28,7 +31,7 @@ namespace HYSYS.ViewModels.HomeVMs
         public LoginUserInfo DoLogin(bool ignorePris = false)
         {
             //根据用户名和密码查询用户
-            var user = DC.Set<FrameworkUserBase>()
+            var user = DC.Set<MyUser>()
                 .Include(x => x.UserRoles).Include(x=>x.UserGroups)
                 .Where(x => x.ITCode.ToLower() == ITCode.ToLower() && x.Password == Utils.GetMD5String(Password) && x.IsValid)
                 .SingleOrDefault();
@@ -41,6 +44,9 @@ namespace HYSYS.ViewModels.HomeVMs
             }
             var roleIDs = user.UserRoles.Select(x => x.RoleId).ToList();
             var groupIDs = user.UserGroups.Select(x => x.GroupId).ToList();
+            var sDictionary = new Dictionary<string, object>();
+            sDictionary.Add("CompanyId",  user.CompanyId);
+            
             //查找登录用户的数据权限
             var dpris = DC.Set<DataPrivilege>()
                 .Where(x => x.UserId == user.ID ||  ( x.GroupId != null && groupIDs.Contains(x.GroupId.Value)))
@@ -54,7 +60,8 @@ namespace HYSYS.ViewModels.HomeVMs
                 PhotoId = user.PhotoId,
                 Roles = DC.Set<FrameworkRole>().Where(x => user.UserRoles.Select(y => y.RoleId).Contains(x.ID)).ToList(),
                 Groups = DC.Set<FrameworkGroup>().Where(x => user.UserGroups.Select(y => y.GroupId).Contains(x.ID)).ToList(),
-                DataPrivileges = dpris
+                DataPrivileges = dpris,
+                Attributes = sDictionary
             };
             if (ignorePris == false)
             {

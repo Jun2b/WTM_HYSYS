@@ -1,0 +1,13 @@
+﻿@model HYSYS.ViewModels.SupplierVMs.SupplierVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.SupplierCode" />
+<wt:display field="Entity.SupplierName" />
+<wt:display field="Entity.PhoneNumber" />
+<wt:display field="Entity.Remark" />
+</wt:row>
+    <wt:row align=" AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

@@ -1,0 +1,15 @@
+﻿@model HYSYS.ViewModels.CustomerVMs.CustomerVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.CustomerCode" />
+<wt:textbox field="Entity.CustomerName" />
+<wt:textbox field="Entity.PhoneNumber" />
+<wt:textbox field="Entity.Remark" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

@@ -1,0 +1,9 @@
+﻿@model HYSYS.ViewModels.LocationVMs.LocationListVM
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.LocationCode" />
+<wt:textbox field="Searcher.LocationName" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" />
