@@ -14,10 +14,13 @@ namespace HYSYS
         public DbSet<Location> Locations { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<StoreIn> StoreIns { get; set; }
+
 
         public DataContext(string cs, DBTypeEnum dbtype)
              : base(cs, dbtype)
         {
+
         }
 
     }

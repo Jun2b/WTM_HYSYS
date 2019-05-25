@@ -1,0 +1,12 @@
+﻿@model HYSYS.ViewModels.StoreInVMs.StoreInListVM
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:textbox field="Searcher.OrderSn" />
+<wt:datetime field="Searcher.DateIn" />
+<wt:combobox field="Searcher.LocationId" items="Searcher.AllLocations" empty-text="全部" />
+<wt:combobox field="Searcher.SupplierId" items="Searcher.AllSuppliers" empty-text="全部" />
+<wt:combobox field="Searcher.isComfire" empty-text="全部" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" />

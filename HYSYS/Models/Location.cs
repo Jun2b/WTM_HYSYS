@@ -17,8 +17,8 @@ namespace HYSYS.Models
         [Display(Name = "所属公司")]
         [Required()]
         public Guid? CompanyId { get; set; }
-        [Display(Name = "所属公司")]
-        public Company Company { get; set; }
+        //[Display(Name = "所属公司")]
+        //public Company Company { get; set; }
 
         [Display(Name = "备注")]
         public string Remark { get; set; }
