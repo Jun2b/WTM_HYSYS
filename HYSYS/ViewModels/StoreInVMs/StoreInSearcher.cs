@@ -27,8 +27,8 @@ namespace HYSYS.ViewModels.StoreInVMs
 
         protected override void InitVM()
         {
-            AllLocations = DC.Set<Location>().GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.LocationName);
-            AllSuppliers = DC.Set<Supplier>().GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.SupplierName);
+            AllLocations = DC.Set<Location>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.LocationName);
+            AllSuppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.SupplierName);
         }
 
     }
