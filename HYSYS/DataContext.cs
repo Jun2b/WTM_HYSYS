@@ -15,6 +15,7 @@ namespace HYSYS
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<StoreIn> StoreIns { get; set; }
+        public DbSet<StoreInPrice> StroreStoreInPrices { get; set; }
 
 
         public DataContext(string cs, DBTypeEnum dbtype)

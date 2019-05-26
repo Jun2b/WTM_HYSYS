@@ -1,0 +1,32 @@
+﻿@model HYSYS.ViewModels.StoreInPriceVMs.StoreInPriceVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:datetime field="Entity.DateIn" />
+<wt:textbox field="Entity.m10p" />
+<wt:textbox field="Entity.m18p" />
+<wt:textbox field="Entity.m20p" />
+<wt:textbox field="Entity.m25p" />
+<wt:textbox field="Entity.m28p" />
+<wt:textbox field="Entity.m30p" />
+<wt:textbox field="Entity.m35p" />
+<wt:textbox field="Entity.m40p" />
+<wt:textbox field="Entity.m50p" />
+<wt:textbox field="Entity.g10p" />
+<wt:textbox field="Entity.g20p" />
+<wt:textbox field="Entity.g25p" />
+<wt:textbox field="Entity.g30p" />
+<wt:textbox field="Entity.g35p" />
+<wt:textbox field="Entity.g40p" />
+<wt:textbox field="Entity.g45p" />
+<wt:textbox field="Entity.g50p" />
+<wt:textbox field="Entity.g60p" />
+<wt:textbox field="Entity.g70p" />
+<wt:textbox field="Entity.g80p" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

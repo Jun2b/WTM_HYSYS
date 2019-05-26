@@ -1,0 +1,8 @@
+﻿@model HYSYS.ViewModels.StoreInPriceVMs.StoreInPriceListVM
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:datetime field="Searcher.DateIn" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" />
