@@ -44,13 +44,19 @@ namespace HYSYS.ViewModels.HomeVMs
             }
             var roleIDs = user.UserRoles.Select(x => x.RoleId).ToList();
             var groupIDs = user.UserGroups.Select(x => x.GroupId).ToList();
+
             var sDictionary = new Dictionary<string, object>();
             sDictionary.Add("CompanyId",  user.CompanyId);
             
+
             //查找登录用户的数据权限
             var dpris = DC.Set<DataPrivilege>()
                 .Where(x => x.UserId == user.ID ||  ( x.GroupId != null && groupIDs.Contains(x.GroupId.Value)))
                 .ToList();
+            //查找登录用户的公司信息
+            var companies = DC.Set<Company>().Where(x=>x.ID==user.CompanyId).ToList();
+            sDictionary.Add("CompanyCode", companies[0].CompanyCode);
+
             //生成并返回登录用户信息
             LoginUserInfo rv = new LoginUserInfo
             {

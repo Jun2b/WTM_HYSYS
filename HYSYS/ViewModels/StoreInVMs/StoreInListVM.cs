@@ -110,8 +110,8 @@ namespace HYSYS.ViewModels.StoreInVMs
     }
 
     public class StoreIn_View : StoreIn{
-        [Display(Name = "公司名称")]
-        public String CompanyName_view { get; set; }
+        //[Display(Name = "公司名称")]
+        //public String CompanyName_view { get; set; }
         [Display(Name = "仓库名称")]
         public String LocationName_view { get; set; }
         [Display(Name = "供应商名称")]

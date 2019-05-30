@@ -16,8 +16,8 @@ namespace HYSYS.Controllers
             vm.Redirect = HttpContext.Request.Query["rd"];
             if (ConfigInfo.IsQuickDebug == true)
             {
-                vm.ITCode = "admin";
-                vm.Password = "000000";
+                vm.ITCode = "lch";
+                vm.Password = "lch";
             }
             return View(vm);
         }

@@ -17,6 +17,8 @@ namespace HYSYS.ViewModels.StoreInVMs
 
         //public List<Supplier> Suppliers { get; set; }
 
+        public StoreInPrice TodayPrice { get; set; }
+
         public StoreInVM()
         {
             SetInclude(x => x.Location);
@@ -28,6 +30,8 @@ namespace HYSYS.ViewModels.StoreInVMs
             AllLocations = DC.Set<Location>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null,y => y.LocationName);
             AllSuppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.SupplierName);
             //Suppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).ToList();
+
+            //TodayPrice=DC.Set<StoreInPrice>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).
         }
 
         public override void DoAdd()
@@ -36,6 +40,7 @@ namespace HYSYS.ViewModels.StoreInVMs
             Entity.isComfire = false;
             base.DoAdd();
         }
+
 
         public override void DoEdit(bool updateAllFields = false)
         {
@@ -46,5 +51,7 @@ namespace HYSYS.ViewModels.StoreInVMs
         {
             base.DoDelete();
         }
+
+
     }
 }

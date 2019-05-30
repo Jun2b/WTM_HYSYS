@@ -1,13 +1,13 @@
-﻿@model HYSYS.ViewModels.StoreInVMs.StoreInVM
+﻿@using HYSYS.Models
+@model HYSYS.ViewModels.StoreInVMs.StoreInVM
 
 <wt:form vm="@Model">
     <wt:row items-per-row="ItemsPerRowEnum.Two">
         <wt:textbox field="Entity.OrderSn" />
-        <wt:datetime field="Entity.DateIn" ready-func="readyFunc"/>
-
-        <wt:combobox field="Entity.LocationId" items="AllLocations"/>
+        <wt:datetime field="Entity.DateIn" done-func="doneFunc" />
+        <wt:combobox field="Entity.LocationId" items="AllLocations" />
         <wt:combobox field="Entity.SupplierId" items="AllSuppliers" />
-        
+
         @*<wt:selector field="Entity.SupplierId" list-vm="Suppliers" text-bind="Suppliers.EntityList[0].LocationName" select-button-text="条件">
             <wt:searchpanel vm="StudentList">
                 <wt:row items-per-row=" ItemsPerRowEnum.Two">
@@ -16,28 +16,54 @@
                 </wt:row>
             </wt:searchpanel>
         </wt:selector>*@
-
-        <wt:textbox field="Entity.m10" />
-        <wt:textbox field="Entity.m18" />
-        <wt:textbox field="Entity.m20" />
-        <wt:textbox field="Entity.m25" />
-        <wt:textbox field="Entity.m28" />
-        <wt:textbox field="Entity.m30" />
-        <wt:textbox field="Entity.m35" />
-        <wt:textbox field="Entity.m40" />
-        <wt:textbox field="Entity.m50" />
-        <wt:textbox field="Entity.g10" />
-        <wt:textbox field="Entity.g20" />
-        <wt:textbox field="Entity.g25" />
-        <wt:textbox field="Entity.g30" />
-        <wt:textbox field="Entity.g35" />
-        <wt:textbox field="Entity.g40" />
-        <wt:textbox field="Entity.g45" />
-        <wt:textbox field="Entity.g50" />
-        <wt:textbox field="Entity.g60" />
-        <wt:textbox field="Entity.g70" />
-        <wt:textbox field="Entity.g80" />
-        <wt:textbox field="Entity.TotalPrice" />
+        <wt:fieldset title="重量(斤)">
+            <wt:textbox field="Entity.m10" />
+            <wt:textbox field="Entity.m18" />
+            <wt:textbox field="Entity.m20" />
+            <wt:textbox field="Entity.m25" />
+            <wt:textbox field="Entity.m28" />
+            <wt:textbox field="Entity.m30" />
+            <wt:textbox field="Entity.m35" />
+            <wt:textbox field="Entity.m40" />
+            <wt:textbox field="Entity.m50" />
+            <wt:textbox field="Entity.g10" />
+            <wt:textbox field="Entity.g20" />
+            <wt:textbox field="Entity.g25" />
+            <wt:textbox field="Entity.g30" />
+            <wt:textbox field="Entity.g35" />
+            <wt:textbox field="Entity.g40" />
+            <wt:textbox field="Entity.g45" />
+            <wt:textbox field="Entity.g50" />
+            <wt:textbox field="Entity.g60" />
+            <wt:textbox field="Entity.g70" />
+            <wt:textbox field="Entity.g80" />
+        </wt:fieldset>
+        <wt:fieldset title="价格表/斤">
+            <wt:textbox field="TodayPrice.m10p" disabled="true" />
+            <wt:textbox field="TodayPrice.m18p" disabled="true" />
+            <wt:textbox field="TodayPrice.m20p" disabled="true" />
+            <wt:textbox field="TodayPrice.m25p" disabled="true" />
+            <wt:textbox field="TodayPrice.m28p" disabled="true" />
+            <wt:textbox field="TodayPrice.m30p" disabled="true" />
+            <wt:textbox field="TodayPrice.m35p" disabled="true" />
+            <wt:textbox field="TodayPrice.m40p" disabled="true" />
+            <wt:textbox field="TodayPrice.m50p" disabled="true" />
+            <wt:textbox field="TodayPrice.g10p" disabled="true" />
+            <wt:textbox field="TodayPrice.g20p" disabled="true" />
+            <wt:textbox field="TodayPrice.g25p" disabled="true" />
+            <wt:textbox field="TodayPrice.g30p" disabled="true" />
+            <wt:textbox field="TodayPrice.g35p" disabled="true" />
+            <wt:textbox field="TodayPrice.g40p" disabled="true" />
+            <wt:textbox field="TodayPrice.g45p" disabled="true" />
+            <wt:textbox field="TodayPrice.g50p" disabled="true" />
+            <wt:textbox field="TodayPrice.g60p" disabled="true" />
+            <wt:textbox field="TodayPrice.g70p" disabled="true" />
+            <wt:textbox field="TodayPrice.g80p" disabled="true" />
+        </wt:fieldset>
+        <wt:fieldset>
+            <wt:textbox field="Entity.TotalPrice" />
+            <wt:button click="priceCalc()" text="计算总价" />
+        </wt:fieldset>
         <wt:textbox field="Entity.Remark" />
         @*<wt:combobox field="Entity.isComfire" />*@
     </wt:row>
@@ -47,7 +73,120 @@
     </wt:row>
 </wt:form>
 <script>
-    function readyFunc(value) {
-        value = dateTime.now;
+    function doneFunc(value) {
+        console.log(value),
+            $.ajax({
+                type: "Post",
+                url: 'api/DataApi/PriceGet',
+                data: { "dTime": value },
+                //contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                //请求成功的处理
+                success: function(data) {
+                    //console.log(data);
+                    if (data['ResultCode'] == "0") {
+                        //alert(data.sip.m10p);
+                        //document.getElementById("Entity_m10").value = "12345";
+                        //$("#TodayPrice_m10p").val("22222");
+                        $("#TodayPrice_m10p").val(data.sip.m10p);
+                        $("#TodayPrice_m18p").val(data.sip.m18p);
+                        $("#TodayPrice_m20p").val(data.sip.m20p);
+                        $("#TodayPrice_m25p").val(data.sip.m25p);
+                        $("#TodayPrice_m28p").val(data.sip.m28p);
+                        $("#TodayPrice_m30p").val(data.sip.m30p);
+                        $("#TodayPrice_m35p").val(data.sip.m35p);
+                        $("#TodayPrice_m40p").val(data.sip.m40p);
+                        $("#TodayPrice_m50p").val(data.sip.m50p);
+                        $("#TodayPrice_g10p").val(data.sip.g10p);
+                        $("#TodayPrice_g20p").val(data.sip.g20p);
+                        $("#TodayPrice_g25p").val(data.sip.g25p);
+                        $("#TodayPrice_g30p").val(data.sip.g30p);
+                        $("#TodayPrice_g35p").val(data.sip.g35p);
+                        $("#TodayPrice_g40p").val(data.sip.g40p);
+                        $("#TodayPrice_g45p").val(data.sip.g45p);
+                        $("#TodayPrice_g50p").val(data.sip.g50p);
+                        $("#TodayPrice_g60p").val(data.sip.g60p);
+                        $("#TodayPrice_g70p").val(data.sip.g70p);
+                        $("#TodayPrice_g80p").val(data.sip.g80p);
+                    } else {
+                        layer.alert("当前日期价格未设置，请前往设置");
+                        $("#TodayPrice_m10p").val("");
+                        $("#TodayPrice_m18p").val("");
+                        $("#TodayPrice_m20p").val("");
+                        $("#TodayPrice_m25p").val("");
+                        $("#TodayPrice_m28p").val("");
+                        $("#TodayPrice_m30p").val("");
+                        $("#TodayPrice_m35p").val("");
+                        $("#TodayPrice_m40p").val("");
+                        $("#TodayPrice_m50p").val("");
+                        $("#TodayPrice_g10p").val("");
+                        $("#TodayPrice_g20p").val("");
+                        $("#TodayPrice_g25p").val("");
+                        $("#TodayPrice_g30p").val("");
+                        $("#TodayPrice_g35p").val("");
+                        $("#TodayPrice_g40p").val("");
+                        $("#TodayPrice_g45p").val("");
+                        $("#TodayPrice_g50p").val("");
+                        $("#TodayPrice_g60p").val("");
+                        $("#TodayPrice_g70p").val("");
+                        $("#TodayPrice_g80p").val("");
+                    }
+
+                }, 
+                //complete:function(){},//请求完成的处理
+                error: function() { layer.alert("网络错误，请重新选择日期"); } //请求出错的处理
+            });
+    };
+    function priceCalc() {
+        if ($("#TodayPrice_m10p").val()=="") {
+            //alert("请选择正确的日期");
+            layer.alert("请选择正确的日期价格");
+            return;
+        }
+        var m10 = $("#Entity_m10").val() * $("#TodayPrice_m10p").val();
+        var m18=$("#Entity_m18").val() *$("#TodayPrice_m18p").val();
+        var m20=$("#Entity_m20").val() *$("#TodayPrice_m20p").val();
+        var m25=$("#Entity_m25").val() *$("#TodayPrice_m25p").val();
+        var m28=$("#Entity_m28").val() *$("#TodayPrice_m28p").val();
+        var m30=$("#Entity_m30").val() *$("#TodayPrice_m30p").val();
+        var m35=$("#Entity_m35").val() *$("#TodayPrice_m35p").val();
+        var m40=$("#Entity_m40").val() *$("#TodayPrice_m40p").val();
+        var m50=$("#Entity_m50").val() *$("#TodayPrice_m50p").val();
+        var g10=$("#Entity_g10").val() *$("#TodayPrice_g10p").val();
+        var g20=$("#Entity_g20").val() *$("#TodayPrice_g20p").val();
+        var g25=$("#Entity_g25").val() *$("#TodayPrice_g25p").val();
+        var g30=$("#Entity_g30").val() *$("#TodayPrice_g30p").val();
+        var g35=$("#Entity_g35").val() *$("#TodayPrice_g35p").val();
+        var g40=$("#Entity_g40").val() *$("#TodayPrice_g40p").val();
+        var g45=$("#Entity_g45").val() *$("#TodayPrice_g45p").val();
+        var g50=$("#Entity_g50").val() *$("#TodayPrice_g50p").val();
+        var g60=$("#Entity_g60").val() *$("#TodayPrice_g60p").val();
+        var g70=$("#Entity_g70").val() *$("#TodayPrice_g70p").val();
+        var g80 = $("#Entity_g80").val() * $("#TodayPrice_g80p").val();
+        var total = m10 +
+            m18 +
+            m20 +
+            m25 +
+            m28 +
+            m30 +
+            m35 +
+            m40 +
+            m50 +
+            g10 +
+            g20 +
+            g25 +
+            g30 +
+            g35 +
+            g40 +
+            g45 +
+            g50 +
+            g60 +
+            g70 +
+            g80;
+        $("#Entity_TotalPrice").val(total);
+
+    };
+    function initSN() {
+
     }
 </script>
