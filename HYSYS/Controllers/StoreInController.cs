@@ -25,6 +25,7 @@ namespace HYSYS.Controllers
         public ActionResult Create()
         {
             var vm = CreateVM<StoreInVM>();
+            vm.GenerateSn();
             return PartialView(vm);
         }
 

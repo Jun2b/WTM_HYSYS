@@ -7,7 +7,6 @@
         <wt:datetime field="Entity.DateIn" done-func="doneFunc" />
         <wt:combobox field="Entity.LocationId" items="AllLocations" />
         <wt:combobox field="Entity.SupplierId" items="AllSuppliers" />
-
         @*<wt:selector field="Entity.SupplierId" list-vm="Suppliers" text-bind="Suppliers.EntityList[0].LocationName" select-button-text="条件">
             <wt:searchpanel vm="StudentList">
                 <wt:row items-per-row=" ItemsPerRowEnum.Two">
@@ -143,26 +142,67 @@
             layer.alert("请选择正确的日期价格");
             return;
         }
-        var m10 = $("#Entity_m10").val() * $("#TodayPrice_m10p").val();
-        var m18=$("#Entity_m18").val() *$("#TodayPrice_m18p").val();
-        var m20=$("#Entity_m20").val() *$("#TodayPrice_m20p").val();
-        var m25=$("#Entity_m25").val() *$("#TodayPrice_m25p").val();
-        var m28=$("#Entity_m28").val() *$("#TodayPrice_m28p").val();
-        var m30=$("#Entity_m30").val() *$("#TodayPrice_m30p").val();
-        var m35=$("#Entity_m35").val() *$("#TodayPrice_m35p").val();
-        var m40=$("#Entity_m40").val() *$("#TodayPrice_m40p").val();
-        var m50=$("#Entity_m50").val() *$("#TodayPrice_m50p").val();
-        var g10=$("#Entity_g10").val() *$("#TodayPrice_g10p").val();
-        var g20=$("#Entity_g20").val() *$("#TodayPrice_g20p").val();
-        var g25=$("#Entity_g25").val() *$("#TodayPrice_g25p").val();
-        var g30=$("#Entity_g30").val() *$("#TodayPrice_g30p").val();
-        var g35=$("#Entity_g35").val() *$("#TodayPrice_g35p").val();
-        var g40=$("#Entity_g40").val() *$("#TodayPrice_g40p").val();
-        var g45=$("#Entity_g45").val() *$("#TodayPrice_g45p").val();
-        var g50=$("#Entity_g50").val() *$("#TodayPrice_g50p").val();
-        var g60=$("#Entity_g60").val() *$("#TodayPrice_g60p").val();
-        var g70=$("#Entity_g70").val() *$("#TodayPrice_g70p").val();
-        var g80 = $("#Entity_g80").val() * $("#TodayPrice_g80p").val();
+        var m10q = $("#Entity_m10").val();
+        var m10p = $("#TodayPrice_m10p").val();
+        var m18q = $("#Entity_m18").val();
+        var m18p = $("#TodayPrice_m18p").val();
+        var m20q = $("#Entity_m20").val();
+        var m20p = $("#TodayPrice_m20p").val();
+        var m25q = $("#Entity_m25").val();
+        var m25p = $("#TodayPrice_m25p").val();
+        var m28q = $("#Entity_m28").val();
+        var m28p = $("#TodayPrice_m28p").val();
+        var m30q = $("#Entity_m30").val();
+        var m30p = $("#TodayPrice_m30p").val();
+        var m35q = $("#Entity_m35").val();
+        var m35p = $("#TodayPrice_m35p").val();
+        var m40q = $("#Entity_m40").val();
+        var m40p = $("#TodayPrice_m40p").val();
+        var m50q = $("#Entity_m50").val();
+        var m50p = $("#TodayPrice_m50p").val();
+        var g10q = $("#Entity_g10").val();
+        var g10p = $("#TodayPrice_g10p").val();
+        var g20q = $("#Entity_g20").val();
+        var g20p = $("#TodayPrice_g20p").val();
+        var g25q = $("#Entity_g25").val();
+        var g25p = $("#TodayPrice_g25p").val();
+        var g30q = $("#Entity_g30").val();
+        var g30p = $("#TodayPrice_g30p").val();
+        var g35q = $("#Entity_g35").val();
+        var g35p = $("#TodayPrice_g35p").val();
+        var g40q = $("#Entity_g40").val();
+        var g40p = $("#TodayPrice_g40p").val();
+        var g45q = $("#Entity_g45").val();
+        var g45p = $("#TodayPrice_g45p").val();
+        var g50q = $("#Entity_g50").val();
+        var g50p = $("#TodayPrice_g50p").val();
+        var g60q = $("#Entity_g60").val();
+        var g60p = $("#TodayPrice_g60p").val();
+        var g70q = $("#Entity_g70").val();
+        var g70p = $("#TodayPrice_g70p").val();
+        var g80q = $("#Entity_g80").val();
+        var g80p = $("#TodayPrice_g80p").val();
+
+        var m10 = m10q * m10p;
+        var m18 = m18q * m18p;
+        var m20 = m20q * m20p;
+        var m25 = m25q * m25p;
+        var m28 = m28q * m28p;
+        var m30 = m30q * m30p;
+        var m35 = m35q * m35p;
+        var m40 = m40q * m40p;
+        var m50 = m50q * m50p;
+        var g10 = g10q * g10p;
+        var g20 = g20q * g20p;
+        var g25 = g25q * g25p;
+        var g30 = g30q * g30p;
+        var g35 = g35q * g35p;
+        var g40 = g40q * g40p;
+        var g45 = g45q * g45p;
+        var g50 = g50q * g50p;
+        var g60 = g60q * g60p;
+        var g70 = g70q * g70p;
+        var g80 = g80q * g80p;
         var total = m10 +
             m18 +
             m20 +
@@ -184,9 +224,28 @@
             g70 +
             g80;
         $("#Entity_TotalPrice").val(total);
+        var info = "中母：" + m10q + " * " + m10p + " = "+m10 + "</br>"
+            + "1.8母："+ m18q + " * " + m18p + " = "+m18 + "</br>"
+            +"2母："+ m20q + " * " + m20p + " = "+m20 + "</br>"
+            + "2.5母："+ m25q + " * " + m25p + " = "+m25 + "</br>"
+            + "2.8母："+ m28q + " * " + m28p + " = "+m28 + "</br>"
+            + "3母："+ m30q + " * " + m30p + " = "+m30 + "</br>"
+            + "3.5母："+ m35q + " * " + m35p + " = "+m35 + "</br>"
+            + "4母："+ m40q + " * " + m40p + " = "+m40 + "</br>"
+            + "5母："+ m50q + " * " + m50p + " = "+m50 + "</br>"
+            + "中公："+ g10q + " * " + g10p + " = "+g10 + "</br>"
+            + "2公："+ g20q + " * " + g20p + " = "+g20 + "</br>"
+            + "2.5公："+ g25q + " * " + g25p + " = "+g25 + "</br>"
+            + "3公："+ g30q + " * " + g30p + " = "+g30 + "</br>"
+            + "3.5公："+ g35q + " * " + g35p + " = "+g35 + "</br>"
+            + "4公："+ g40q + " * " + g40p + " = "+g40 + "</br>"
+            + "4.5公："+ g40q + " * " + g45p + " = "+g45 + "</br>"
+            + "5公："+ g50q + " * " + g50p + " = "+g50 + "</br>"
+            + "6公："+ g60q + " * " + g60p + " = "+g60 + "</br>"
+            + "7公："+ g70q + " * " + g70p + " = "+g70 + "</br>"
+            + "8公：" + g80q + " * " + g80p + " = " + g80 + "</br>"
+            +"总价："+total;
+        layer.alert(info);
 
     };
-    function initSN() {
-
-    }
 </script>

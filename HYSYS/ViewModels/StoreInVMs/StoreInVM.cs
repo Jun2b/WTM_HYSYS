@@ -52,6 +52,12 @@ namespace HYSYS.ViewModels.StoreInVMs
             base.DoDelete();
         }
 
+        public void GenerateSn()
+        {
+            var now = DateTime.Now.ToString("yyyyMMddHHmm");
+            var companycode=LoginUserInfo.Attributes["CompanyCode"].ToString();
+            Entity.OrderSn = companycode + now;
+        }
 
     }
 }
