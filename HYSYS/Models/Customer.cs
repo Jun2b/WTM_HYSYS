@@ -7,6 +7,7 @@ namespace HYSYS.Models
     public class Customer:BasePoco
     {
         [Display(Name = "客户编码")]
+        [StringLength(5)]
         public string CustomerCode { get; set; }
 
         [Display(Name = "客户名称")]
@@ -17,11 +18,11 @@ namespace HYSYS.Models
         [Display(Name = "联系方式")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "所属公司")]
+        [Display(Name = "本公司名称")]
         [Required()]
         public Guid? CompanyId { get; set; }
-        [Display(Name = "所属公司")]
-        public Company Company { get; set; }
+        //[Display(Name = "本公司名称")]
+        //public Company Company { get; set; }
 
         [Display(Name = "备注")]
         public string Remark { get; set; }

@@ -9,6 +9,7 @@ namespace HYSYS.Models
 
         [Display(Name = "仓库编码")]
         [Required(ErrorMessage = "{0}是必填项")]
+        [StringLength(5)]
         public string LocationCode { get; set; }
         [Display(Name = "仓库名称")]
         [StringLength(50, ErrorMessage = "{0}最多输入{1}个字符")]

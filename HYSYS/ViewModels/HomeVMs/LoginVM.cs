@@ -54,8 +54,12 @@ namespace HYSYS.ViewModels.HomeVMs
                 .Where(x => x.UserId == user.ID ||  ( x.GroupId != null && groupIDs.Contains(x.GroupId.Value)))
                 .ToList();
             //查找登录用户的公司信息
-            var companies = DC.Set<Company>().Where(x=>x.ID==user.CompanyId).ToList();
-            sDictionary.Add("CompanyCode", companies[0].CompanyCode);
+            var company = DC.Set<Company>().Where(x=>x.ID==user.CompanyId).SingleOrDefault();
+            if (company!=null)
+            {
+                sDictionary.Add("CompanyCode", company.CompanyCode);
+            }
+            
 
             //生成并返回登录用户信息
             LoginUserInfo rv = new LoginUserInfo

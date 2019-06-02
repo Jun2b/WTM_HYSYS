@@ -6,6 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Core.Extensions;
 using HYSYS.Models;
+using HYSYS.ViewModels.StoreInPriceVMs;
+using HYSYS.ViewModels.SupplierVMs;
 
 
 namespace HYSYS.ViewModels.StoreInVMs
@@ -13,14 +15,17 @@ namespace HYSYS.ViewModels.StoreInVMs
     public partial class StoreInVM : BaseCRUDVM<StoreIn>
     {
         public List<ComboSelectListItem> AllLocations { get; set; }
-        public List<ComboSelectListItem> AllSuppliers { get; set; }
+        //public List<ComboSelectListItem> AllSuppliers { get; set; }
+        
 
-        //public List<Supplier> Suppliers { get; set; }
+        public SupplierListVM SelcetSupplierListVm { get; set; }
+
 
         public StoreInPrice TodayPrice { get; set; }
 
         public StoreInVM()
         {
+            SelcetSupplierListVm=new SupplierListVM();
             SetInclude(x => x.Location);
             SetInclude(x => x.Supplier);
         }
@@ -28,10 +33,9 @@ namespace HYSYS.ViewModels.StoreInVMs
         protected override void InitVM()
         {
             AllLocations = DC.Set<Location>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null,y => y.LocationName);
-            AllSuppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.SupplierName);
-            //Suppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).ToList();
+            //AllSuppliers = DC.Set<Supplier>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.SupplierName);
+            //SelcetSupplierListVm.DoInitListVM();
 
-            //TodayPrice=DC.Set<StoreInPrice>().Where(x => x.CompanyId == new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).
         }
 
         public override void DoAdd()

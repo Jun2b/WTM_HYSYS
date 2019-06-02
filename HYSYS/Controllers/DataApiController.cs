@@ -6,12 +6,14 @@ using HYSYS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.XSSF.Streaming.Values;
+using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 
 namespace HYSYS.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [AllRights]
     public class DataApiController : BaseApiController
     {
         public class PriceReturn

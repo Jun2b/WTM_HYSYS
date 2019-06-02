@@ -26,7 +26,7 @@ namespace HYSYS.ViewModels.CustomerVMs
 	    protected override void InitVM()
         {
             Company_Excel.DataType = ColumnDataType.ComboBox;
-            Company_Excel.ListItems = DC.Set<Company>().GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.CompanyName);
+            Company_Excel.ListItems = DC.Set<Company>().Where(x=>x.ID==new Guid(LoginUserInfo.Attributes["CompanyId"].ToString())).GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.CompanyName);
         }
 
     }

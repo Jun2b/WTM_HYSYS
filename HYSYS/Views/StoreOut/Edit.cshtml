@@ -1,15 +1,15 @@
-﻿@model HYSYS.ViewModels.StoreInVMs.StoreInVM
+﻿@model HYSYS.ViewModels.StoreOutVMs.StoreOutVM
 
 <wt:form vm="@Model">
 <wt:row items-per-row="ItemsPerRowEnum.Two">
 <wt:textbox field="Entity.OrderSn" />
-<wt:datetime field="Entity.DateIn" />
+<wt:datetime field="Entity.DateOut" />
 <wt:combobox field="Entity.LocationId" items="AllLocations"/>
-@*<wt:combobox field="Entity.SupplierId" items="AllSuppliers"/>*@
-<wt:selector field="Entity.SupplierId" list-vm="SelcetSupplierListVm" text-bind="SelcetSupplierListVm.EntityList[0].SupplierName" select-button-text="选择">
-    <wt:searchpanel vm="SelcetSupplierListVm">
+@*<wt:combobox field="Entity.CustomerId" items="AllCustomers"/>*@
+<wt:selector field="Entity.CustomerId" list-vm="SelcetCustomerListVm" text-bind="SelcetCustomerListVm.EntityList[0].CustomerName" select-button-text="选择">
+    <wt:searchpanel vm="SelcetCustomerListVm">
         <wt:row items-per-row=" ItemsPerRowEnum.Two">
-            <wt:textbox field="SelcetSupplierListVm.Searcher.SupplierName" />
+            <wt:textbox field="SelcetCustomerListVm.Searcher.CustomerName" />
         </wt:row>
     </wt:searchpanel>
 </wt:selector>
@@ -35,7 +35,7 @@
 <wt:textbox field="Entity.g80" />
 <wt:textbox field="Entity.TotalPrice" />
 <wt:textbox field="Entity.Remark" />
-<wt:display field="Entity.isComfire" />
+<wt:combobox field="Entity.isComfire" />
 </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">

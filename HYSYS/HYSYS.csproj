@@ -18,8 +18,8 @@
 
 
   <ItemGroup>
-    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="2.2.41" />
-    <PackageReference Include="WalkingTec.Mvvm.Mvc.Admin" Version="2.2.41" />
+    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="2.2.43" />
+    <PackageReference Include="WalkingTec.Mvvm.Mvc.Admin" Version="2.2.43" />
  </ItemGroup>
 </Project>
 

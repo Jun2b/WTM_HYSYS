@@ -8,7 +8,7 @@ namespace HYSYS.Models
     {
         [Display(Name = "供应商编码")]
         [Required(ErrorMessage = "{0}是必填项")]
-        [StringLength(3)]
+        [StringLength(5)]
         public string SupplierCode { get; set; }
 
         [Display(Name = "供应商名称")]
@@ -19,10 +19,10 @@ namespace HYSYS.Models
         [Display(Name = "联系方式")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "所属公司")]
+        [Display(Name = "本公司名称")]
         [Required()]
         public Guid? CompanyId { get; set; }
-        //[Display(Name = "所属公司")]
+        //[Display(Name = "本公司名称")]
         //public Company Company { get; set; }
 
         [Display(Name = "备注")]

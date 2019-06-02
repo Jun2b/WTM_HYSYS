@@ -6,15 +6,14 @@
         <wt:textbox field="Entity.OrderSn" />
         <wt:datetime field="Entity.DateIn" done-func="doneFunc" />
         <wt:combobox field="Entity.LocationId" items="AllLocations" />
-        <wt:combobox field="Entity.SupplierId" items="AllSuppliers" />
-        @*<wt:selector field="Entity.SupplierId" list-vm="Suppliers" text-bind="Suppliers.EntityList[0].LocationName" select-button-text="条件">
-            <wt:searchpanel vm="StudentList">
+        @*<wt:combobox field="Entity.SupplierId" items="AllSuppliers" />*@
+        <wt:selector field="Entity.SupplierId" list-vm="SelcetSupplierListVm" text-bind="SelcetSupplierListVm.EntityList[0].SupplierName" select-button-text="选择">
+            <wt:searchpanel vm="SelcetSupplierListVm">
                 <wt:row items-per-row=" ItemsPerRowEnum.Two">
-                    <wt:textbox field="StudentList.Searcher.LoginName" />
-                    <wt:combobox field="StudentList.Searcher.Sex" empty-text="全部" />
+                    <wt:textbox field="SelcetSupplierListVm.Searcher.SupplierName" />
                 </wt:row>
             </wt:searchpanel>
-        </wt:selector>*@
+        </wt:selector>
         <wt:fieldset title="重量(斤)">
             <wt:textbox field="Entity.m10" />
             <wt:textbox field="Entity.m18" />
