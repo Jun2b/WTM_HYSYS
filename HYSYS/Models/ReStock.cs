@@ -9,6 +9,9 @@ namespace HYSYS.Models
         [Display(Name = "所属公司")]
         [Required()]
         public Guid? CompanyId { get; set; }
+
+        [Display(Name = "仓库库位")]
+        public Location Location { get; set; }
         [Display(Name = "仓库库位")]
         [Required()]
         public Guid? LocationId { get; set; }

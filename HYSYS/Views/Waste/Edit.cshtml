@@ -1,0 +1,32 @@
+﻿@model HYSYS.ViewModels.WasteVMs.WasteVM
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:combobox field="Entity.LocationId" items="AllLocations"/>
+<wt:textbox field="Entity.m10" />
+<wt:textbox field="Entity.m18" />
+<wt:textbox field="Entity.m20" />
+<wt:textbox field="Entity.m25" />
+<wt:textbox field="Entity.m28" />
+<wt:textbox field="Entity.m30" />
+<wt:textbox field="Entity.m35" />
+<wt:textbox field="Entity.m40" />
+<wt:textbox field="Entity.m50" />
+<wt:textbox field="Entity.g10" />
+<wt:textbox field="Entity.g20" />
+<wt:textbox field="Entity.g25" />
+<wt:textbox field="Entity.g30" />
+<wt:textbox field="Entity.g35" />
+<wt:textbox field="Entity.g40" />
+<wt:textbox field="Entity.g45" />
+<wt:textbox field="Entity.g50" />
+<wt:textbox field="Entity.g60" />
+<wt:textbox field="Entity.g70" />
+<wt:textbox field="Entity.g80" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

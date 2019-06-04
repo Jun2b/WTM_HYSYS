@@ -1,0 +1,33 @@
+﻿@model HYSYS.ViewModels.WasteVMs.WasteVM
+
+<wt:form vm="@Model">
+	<wt:quote>确定要删除这条数据么：</wt:quote>
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.Location.LocationName" />
+<wt:display field="Entity.m10" />
+<wt:display field="Entity.m18" />
+<wt:display field="Entity.m20" />
+<wt:display field="Entity.m25" />
+<wt:display field="Entity.m28" />
+<wt:display field="Entity.m30" />
+<wt:display field="Entity.m35" />
+<wt:display field="Entity.m40" />
+<wt:display field="Entity.m50" />
+<wt:display field="Entity.g10" />
+<wt:display field="Entity.g20" />
+<wt:display field="Entity.g25" />
+<wt:display field="Entity.g30" />
+<wt:display field="Entity.g35" />
+<wt:display field="Entity.g40" />
+<wt:display field="Entity.g45" />
+<wt:display field="Entity.g50" />
+<wt:display field="Entity.g60" />
+<wt:display field="Entity.g70" />
+<wt:display field="Entity.g80" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align=" AlignEnum.Right">
+        <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="删除"/>
+        <wt:closebutton />
+    </wt:row>
+</wt:form>
