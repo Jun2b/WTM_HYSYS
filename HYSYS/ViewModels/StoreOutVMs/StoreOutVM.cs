@@ -31,7 +31,9 @@ namespace HYSYS.ViewModels.StoreOutVMs
         }
 
         public override void DoAdd()
-        {           
+        {
+            Entity.CompanyId = new Guid(LoginUserInfo.Attributes["CompanyId"].ToString());
+            Entity.isComfire = false;
             base.DoAdd();
         }
 

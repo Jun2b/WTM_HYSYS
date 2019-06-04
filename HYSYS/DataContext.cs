@@ -18,6 +18,10 @@ namespace HYSYS
         public DbSet<StoreInPrice> StoreInPrices { get; set; }
         public DbSet<StoreOut> StoreOuts { get; set; }
 
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<ReStock> ReStocks { get; set; }
+        public DbSet<Waste> Wastes { get; set; }
+
 
         public DataContext(string cs, DBTypeEnum dbtype)
              : base(cs, dbtype)

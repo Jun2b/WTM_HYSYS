@@ -113,11 +113,35 @@ namespace HYSYS.Controllers
         #endregion
 
         #region 详细
-        [ActionDescription("详细")]
+        [ActionDescription("详细/确认")]
         public ActionResult Details(Guid id)
         {
             var vm = CreateVM<StoreInVM>(id);
             return PartialView(vm);
+        }
+        [ActionDescription("详细/确认")]
+        [HttpPost]
+        public ActionResult Details(Guid id, IFormCollection nouse)
+        {
+            var vm = CreateVM<StoreInVM>(id);
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+
+                vm.DoComfire();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                }
+            }
         }
         #endregion
 

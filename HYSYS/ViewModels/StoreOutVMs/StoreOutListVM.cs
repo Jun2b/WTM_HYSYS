@@ -20,7 +20,7 @@ namespace HYSYS.ViewModels.StoreOutVMs
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Create, "新建","", dialogWidth: 800),
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Edit, "修改","", dialogWidth: 800),
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Delete, "删除", "",dialogWidth: 800),
-                this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Details, "详细","", dialogWidth: 800),
+                this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Details, "详细/确认","", dialogWidth: 800),
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.BatchEdit, "批量修改","", dialogWidth: 800),
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.BatchDelete, "批量删除","", dialogWidth: 800),
                 this.MakeStandardAction("StoreOut", GridActionStandardTypesEnum.Import, "导入","", dialogWidth: 800),
@@ -31,6 +31,7 @@ namespace HYSYS.ViewModels.StoreOutVMs
         protected override IEnumerable<IGridColumn<StoreOut_View>> InitGridHeader()
         {
             return new List<GridColumn<StoreOut_View>>{
+                this.MakeGridHeader(x => x.isComfire),
                 this.MakeGridHeader(x => x.OrderSn),
                 this.MakeGridHeader(x => x.DateOut),
                 this.MakeGridHeader(x => x.LocationName_view),
@@ -57,7 +58,6 @@ namespace HYSYS.ViewModels.StoreOutVMs
                 this.MakeGridHeader(x => x.g80),
                 this.MakeGridHeader(x => x.TotalPrice),
                 this.MakeGridHeader(x => x.Remark),
-                this.MakeGridHeader(x => x.isComfire),
                 this.MakeGridHeaderAction(width: 200)
             };
         }

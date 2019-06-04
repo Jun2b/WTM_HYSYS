@@ -33,7 +33,12 @@
 </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align=" AlignEnum.Right">
-        <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="删除"/>
+        @{
+            if (@Model.Entity.isComfire == false)
+            {
+                <wt:submitbutton theme=" ButtonThemeEnum.Warm" text="删除" />
+            }
+        }
         <wt:closebutton />
     </wt:row>
 </wt:form>

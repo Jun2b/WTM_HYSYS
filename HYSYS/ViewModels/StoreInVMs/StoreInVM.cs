@@ -48,6 +48,7 @@ namespace HYSYS.ViewModels.StoreInVMs
 
         public override void DoEdit(bool updateAllFields = false)
         {
+
             base.DoEdit(updateAllFields);
         }
 
@@ -61,6 +62,12 @@ namespace HYSYS.ViewModels.StoreInVMs
             var now = DateTime.Now.ToString("yyyyMMddHHmm");
             var companycode=LoginUserInfo.Attributes["CompanyCode"].ToString();
             Entity.OrderSn = companycode + now;
+        }
+
+        public void DoComfire()
+        {
+            Entity.isComfire = true;
+            DoEdit();
         }
 
     }

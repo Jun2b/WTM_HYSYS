@@ -20,10 +20,12 @@ namespace HYSYS.ViewModels.StoreInVMs
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Create, "新建","", dialogWidth: 800),
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Edit, "修改","", dialogWidth: 800),
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Delete, "删除", "",dialogWidth: 800),
-                this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Details, "详细","", dialogWidth: 800),
+                this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Details, "详细/确认","", dialogWidth: 800),
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.BatchEdit, "批量修改","", dialogWidth: 800),
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.BatchDelete, "批量删除","", dialogWidth: 800),
                 this.MakeStandardAction("StoreIn", GridActionStandardTypesEnum.Import, "导入","", dialogWidth: 800),
+                //this.MakeAction("StoreIn","Comfire","审核","审核确认",GridActionParameterTypesEnum.SingleId,"",800),
+                //this.MakeAction("StoreIn","Comfire","审核确认","审核确认",GridActionParameterTypesEnum.SingleId,null,800,null,null,"222222"),
                 this.MakeStandardExportAction(null,false,ExportEnum.Excel)
             };
         }
@@ -31,6 +33,7 @@ namespace HYSYS.ViewModels.StoreInVMs
         protected override IEnumerable<IGridColumn<StoreIn_View>> InitGridHeader()
         {
             return new List<GridColumn<StoreIn_View>>{
+                this.MakeGridHeader(x => x.isComfire),
                 this.MakeGridHeader(x => x.OrderSn,width: 100),
                 this.MakeGridHeader(x => x.DateIn,width: 100),
                 this.MakeGridHeader(x => x.LocationName_view,width: 100),
@@ -57,7 +60,6 @@ namespace HYSYS.ViewModels.StoreInVMs
                 this.MakeGridHeader(x => x.g80),
                 this.MakeGridHeader(x => x.TotalPrice),
                 this.MakeGridHeader(x => x.Remark),
-                this.MakeGridHeader(x => x.isComfire),
                 this.MakeGridHeaderAction(width: 200)
             };
         }

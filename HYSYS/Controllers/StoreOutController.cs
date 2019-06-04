@@ -117,6 +117,31 @@ namespace HYSYS.Controllers
             var vm = CreateVM<StoreOutVM>(id);
             return PartialView(vm);
         }
+        [ActionDescription("详细/确认")]
+        [HttpPost]
+        public ActionResult Details(Guid id, IFormCollection nouse)
+        {
+            var vm = CreateVM<StoreOutVM>(id);
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                
+                vm.Entity.isComfire = true;
+                vm.DoEdit();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                }
+            }
+        }
         #endregion
 
         #region 批量修改

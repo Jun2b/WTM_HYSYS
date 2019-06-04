@@ -4,30 +4,15 @@ using WalkingTec.Mvvm.Core;
 
 namespace HYSYS.Models
 {
-    public class StoreOut:BasePoco
+    public class Waste:BasePoco
     {
         [Display(Name = "所属公司")]
         [Required()]
         public Guid? CompanyId { get; set; }
-        [Display(Name = "出库单号")]
-        [Required(ErrorMessage = "{0}是必填项")]
-        public string OrderSn { get; set; }
-        [Display(Name = "出库日期")]
-        [Required(ErrorMessage = "{0}是必填项")]
-        public DateTime DateOut { get; set; }
-
-        [Display(Name = "库位名称")]
+        [Display(Name = "仓库库位")]
         [Required()]
         public Guid? LocationId { get; set; }
-        [Display(Name = "库位名称")]
-        public Location Location { get; set; }
-        //
-        [Display(Name = "客户名称")]
-        [Required()]
-        public Guid CustomerId { get; set; }
-        [Display(Name = "供应商名称")]
-        [Required(ErrorMessage = "{0}是必填项")]
-        public Customer Customer { get; set; }
+
         //各种规格
         //母蟹规格
         [Display(Name = "中母")]
@@ -71,15 +56,5 @@ namespace HYSYS.Models
         public float g70 { get; set; }
         [Display(Name = "8公")]
         public float g80 { get; set; }
-        //
-        [Display(Name = "总金额")]
-        [Required(ErrorMessage = "{0}是必填项")]
-        public float TotalPrice { get; set; }
-        //
-
-        [Display(Name = "备注")]
-        public string Remark { get; set; }
-        [Display(Name = "确认状态")]
-        public bool isComfire { get; set; }
     }
 }
