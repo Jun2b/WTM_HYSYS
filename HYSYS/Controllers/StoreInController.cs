@@ -130,7 +130,6 @@ namespace HYSYS.Controllers
             }
             else
             {
-
                 vm.DoComfire();
                 if (!ModelState.IsValid)
                 {

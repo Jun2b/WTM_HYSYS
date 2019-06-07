@@ -22,10 +22,12 @@ namespace HYSYS.ViewModels.ReStockVMs
         protected override void InitVM()
         {
             AllLocations = DC.Set<Location>().GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.LocationName);
+
         }
 
         public override void DoAdd()
-        {           
+        {
+            Entity.CompanyId = new Guid(LoginUserInfo.Attributes["CompanyId"].ToString()); 
             base.DoAdd();
         }
 

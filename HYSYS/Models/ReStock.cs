@@ -104,5 +104,8 @@ namespace HYSYS.Models
         public float g70r { get; set; }
         [Display(Name = "8公")]
         public float g80r { get; set; }
+        [Display(Name = "确认状态")]
+        public bool isComfire { get; set; }
+
     }
 }

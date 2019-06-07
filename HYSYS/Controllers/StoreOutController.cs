@@ -129,8 +129,9 @@ namespace HYSYS.Controllers
             else
             {
                 
-                vm.Entity.isComfire = true;
-                vm.DoEdit();
+                //vm.Entity.isComfire = true;
+                //vm.DoEdit();
+                vm.DoComfire();
                 if (!ModelState.IsValid)
                 {
                     vm.DoReInit();

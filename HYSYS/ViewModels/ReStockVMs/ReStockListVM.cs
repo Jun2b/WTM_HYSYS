@@ -31,6 +31,7 @@ namespace HYSYS.ViewModels.ReStockVMs
         protected override IEnumerable<IGridColumn<ReStock_View>> InitGridHeader()
         {
             return new List<GridColumn<ReStock_View>>{
+                this.MakeGridHeader(x => x.isComfire),
                 this.MakeGridHeader(x => x.LocationName_view),
                 this.MakeGridHeader(x => x.m10),
                 this.MakeGridHeader(x => x.m18),
@@ -79,6 +80,7 @@ namespace HYSYS.ViewModels.ReStockVMs
         public override IOrderedQueryable<ReStock_View> GetSearchQuery()
         {
             var query = DC.Set<ReStock>()
+                .Where(x=>x.CompanyId==new Guid(LoginUserInfo.Attributes["CompanyId"].ToString()))
                 .CheckEqual(Searcher.LocationId, x=>x.LocationId)
                 .Select(x => new ReStock_View
                 {
@@ -124,6 +126,7 @@ namespace HYSYS.ViewModels.ReStockVMs
                     g60r = x.g60r,
                     g70r = x.g70r,
                     g80r = x.g80r,
+                    isComfire = x.isComfire
                 })
                 .OrderBy(x => x.ID);
             return query;

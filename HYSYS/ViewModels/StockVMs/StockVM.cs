@@ -12,16 +12,13 @@ namespace HYSYS.ViewModels.StockVMs
 {
     public partial class StockVM : BaseCRUDVM<Stock>
     {
-        public List<ComboSelectListItem> AllLocations { get; set; }
 
         public StockVM()
         {
-            SetInclude(x => x.Location);
         }
 
         protected override void InitVM()
         {
-            AllLocations = DC.Set<Location>().GetSelectListItems(LoginUserInfo.DataPrivileges, null, y => y.LocationName);
         }
 
         public override void DoAdd()
