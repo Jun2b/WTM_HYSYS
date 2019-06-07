@@ -1,51 +1,143 @@
 ﻿@model HYSYS.ViewModels.ReStockVMs.ReStockVM
 
-<wt:form vm="@Model">
-<wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:combobox field="Entity.LocationId" items="AllLocations"/>
-<wt:textbox field="Entity.m10" disabled="true"/>
-<wt:textbox field="Entity.m18" disabled="true"/>
-<wt:textbox field="Entity.m20" disabled="true"/>
-<wt:textbox field="Entity.m25" disabled="true"/>
-<wt:textbox field="Entity.m28" disabled="true"/>
-<wt:textbox field="Entity.m30" disabled="true"/>
-<wt:textbox field="Entity.m35" disabled="true"/>
-<wt:textbox field="Entity.m40" disabled="true"/>
-<wt:textbox field="Entity.m50" disabled="true"/>
-<wt:textbox field="Entity.g10" disabled="true"/>
-<wt:textbox field="Entity.g20" disabled="true"/>
-<wt:textbox field="Entity.g25" disabled="true"/>
-<wt:textbox field="Entity.g30" disabled="true"/>
-<wt:textbox field="Entity.g35" disabled="true"/>
-<wt:textbox field="Entity.g40" disabled="true"/>
-<wt:textbox field="Entity.g45" disabled="true"/>
-<wt:textbox field="Entity.g50" disabled="true"/>
-<wt:textbox field="Entity.g60" disabled="true"/>
-<wt:textbox field="Entity.g70" disabled="true"/>
-<wt:textbox field="Entity.g80" disabled="true"/>
-<wt:textbox field="Entity.m10r" />
-<wt:textbox field="Entity.m18r" />
-<wt:textbox field="Entity.m20r" />
-<wt:textbox field="Entity.m25r" />
-<wt:textbox field="Entity.m28r" />
-<wt:textbox field="Entity.m30r" />
-<wt:textbox field="Entity.m35r" />
-<wt:textbox field="Entity.m40r" />
-<wt:textbox field="Entity.m50r" />
-<wt:textbox field="Entity.g10r" />
-<wt:textbox field="Entity.g20r" />
-<wt:textbox field="Entity.g25r" />
-<wt:textbox field="Entity.g30r" />
-<wt:textbox field="Entity.g35r" />
-<wt:textbox field="Entity.g40r" />
-<wt:textbox field="Entity.g45r" />
-<wt:textbox field="Entity.g50r" />
-<wt:textbox field="Entity.g60r" />
-<wt:textbox field="Entity.g70r" />
-<wt:textbox field="Entity.g80r" />
-</wt:row>
-    <wt:row align="AlignEnum.Right">
-        <wt:submitbutton />
-        <wt:closebutton />
-    </wt:row>
-</wt:form>
+    <wt:form vm="@Model">
+        <wt:combobox field="Entity.LocationId" items="AllLocations" change-func="doChange" />
+        <wt:row items-per-row="ItemsPerRowEnum.Four">
+            <fieldset name="系统库存">
+                <wt:textbox field="Entity.m10" disabled="true" />
+                <wt:textbox field="Entity.m18" disabled="true" />
+                <wt:textbox field="Entity.m20" disabled="true" />
+                <wt:textbox field="Entity.m25" disabled="true" />
+                <wt:textbox field="Entity.m28" disabled="true" />
+                <wt:textbox field="Entity.m30" disabled="true" />
+                <wt:textbox field="Entity.m35" disabled="true" />
+                <wt:textbox field="Entity.m40" disabled="true" />
+                <wt:textbox field="Entity.m50" disabled="true" />
+                <wt:textbox field="Entity.g10" disabled="true" />
+                <wt:textbox field="Entity.g20" disabled="true" />
+                <wt:textbox field="Entity.g25" disabled="true" />
+                <wt:textbox field="Entity.g30" disabled="true" />
+                <wt:textbox field="Entity.g35" disabled="true" />
+                <wt:textbox field="Entity.g40" disabled="true" />
+                <wt:textbox field="Entity.g45" disabled="true" />
+                <wt:textbox field="Entity.g50" disabled="true" />
+                <wt:textbox field="Entity.g60" disabled="true" />
+                <wt:textbox field="Entity.g70" disabled="true" />
+                <wt:textbox field="Entity.g80" disabled="true" />
+            </fieldset>
+            <fieldset name="实际库存">
+                <wt:textbox field="Entity.m10r" />
+                <wt:textbox field="Entity.m18r" />
+                <wt:textbox field="Entity.m20r" />
+                <wt:textbox field="Entity.m25r" />
+                <wt:textbox field="Entity.m28r" />
+                <wt:textbox field="Entity.m30r" />
+                <wt:textbox field="Entity.m35r" />
+                <wt:textbox field="Entity.m40r" />
+                <wt:textbox field="Entity.m50r" />
+                <wt:textbox field="Entity.g10r" />
+                <wt:textbox field="Entity.g20r" />
+                <wt:textbox field="Entity.g25r" />
+                <wt:textbox field="Entity.g30r" />
+                <wt:textbox field="Entity.g35r" />
+                <wt:textbox field="Entity.g40r" />
+                <wt:textbox field="Entity.g45r" />
+                <wt:textbox field="Entity.g50r" />
+                <wt:textbox field="Entity.g60r" />
+                <wt:textbox field="Entity.g70r" />
+                <wt:textbox field="Entity.g80r" />
+            </fieldset>
+        </wt:row>
+        <wt:row align="AlignEnum.Right">
+            <wt:submitbutton />
+            <wt:closebutton />
+        </wt:row>
+    </wt:form>
+<script>
+    function doChange(data) {
+        //console.log(data.value)
+        if (data.value == "") {
+            $("#Entity_m10").val("");
+            $("#Entity_m18").val("");
+            $("#Entity_m20").val("");
+            $("#Entity_m25").val("");
+            $("#Entity_m28").val("");
+            $("#Entity_m30").val("");
+            $("#Entity_m35").val("");
+            $("#Entity_m40").val("");
+            $("#Entity_m50").val("");
+            $("#Entity_g10").val("");
+            $("#Entity_g20").val("");
+            $("#Entity_g25").val("");
+            $("#Entity_g30").val("");
+            $("#Entity_g35").val("");
+            $("#Entity_g40").val("");
+            $("#Entity_g45").val("");
+            $("#Entity_g50").val("");
+            $("#Entity_g60").val("");
+            $("#Entity_g70").val("");
+            $("#Entity_g80").val("");
+            return;
+        }
+        $.ajax({
+                type: "Post",
+                url: 'api/DataApi/StockGet',
+                data: { "LocationId": data.value },
+                //contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                //请求成功的处理
+                success: function(data) {
+                    //console.log(data);
+                    if (data['ResultCode'] == "0") {
+                        //alert(data.stk.m10p);
+                        //document.getElementById("Entity_m10").value = "12345";
+                        //$("#TodayPrice_m10p").val("22222");
+                        $("#Entity_m10").val(data.stk.m10);
+                        $("#Entity_m18").val(data.stk.m18);
+                        $("#Entity_m20").val(data.stk.m20);
+                        $("#Entity_m25").val(data.stk.m25);
+                        $("#Entity_m28").val(data.stk.m28);
+                        $("#Entity_m30").val(data.stk.m30);
+                        $("#Entity_m35").val(data.stk.m35);
+                        $("#Entity_m40").val(data.stk.m40);
+                        $("#Entity_m50").val(data.stk.m50);
+                        $("#Entity_g10").val(data.stk.g10);
+                        $("#Entity_g20").val(data.stk.g20);
+                        $("#Entity_g25").val(data.stk.g25);
+                        $("#Entity_g30").val(data.stk.g30);
+                        $("#Entity_g35").val(data.stk.g35);
+                        $("#Entity_g40").val(data.stk.g40);
+                        $("#Entity_g45").val(data.stk.g45);
+                        $("#Entity_g50").val(data.stk.g50);
+                        $("#Entity_g60").val(data.stk.g60);
+                        $("#Entity_g70").val(data.stk.g70);
+                        $("#Entity_g80").val(data.stk.g80);
+                    } else {
+                        layer.alert("仓库无库存数据，请重新选择");
+                        $("#Entity_m10").val("");
+                        $("#Entity_m18").val("");
+                        $("#Entity_m20").val("");
+                        $("#Entity_m25").val("");
+                        $("#Entity_m28").val("");
+                        $("#Entity_m30").val("");
+                        $("#Entity_m35").val("");
+                        $("#Entity_m40").val("");
+                        $("#Entity_m50").val("");
+                        $("#Entity_g10").val("");
+                        $("#Entity_g20").val("");
+                        $("#Entity_g25").val("");
+                        $("#Entity_g30").val("");
+                        $("#Entity_g35").val("");
+                        $("#Entity_g40").val("");
+                        $("#Entity_g45").val("");
+                        $("#Entity_g50").val("");
+                        $("#Entity_g60").val("");
+                        $("#Entity_g70").val("");
+                        $("#Entity_g80").val("");
+                    }
+                }, 
+                //complete:function(){},//请求完成的处理
+                error: function() { layer.alert("网络错误，请重新选择"); } //请求出错的处理
+            });
+    };
+</script>

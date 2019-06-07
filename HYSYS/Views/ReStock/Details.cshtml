@@ -43,8 +43,15 @@
 <wt:display field="Entity.g60r" />
 <wt:display field="Entity.g70r" />
 <wt:display field="Entity.g80r" />
+<wt:display field="Entity.isComfire" />
 </wt:row>
-    <wt:row align=" AlignEnum.Right">
-        <wt:closebutton />
-    </wt:row>
+<wt:row align=" AlignEnum.Right">
+    @{
+        if (@Model.Entity.isComfire == false)
+        {
+            <wt:submitbutton theme="ButtonThemeEnum.Warm" text="核实确认" />
+        }
+    }
+    <wt:closebutton />
+</wt:row>
 </wt:form>

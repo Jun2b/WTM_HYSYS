@@ -82,6 +82,7 @@ namespace HYSYS.ViewModels.ReStockVMs
             var query = DC.Set<ReStock>()
                 .Where(x=>x.CompanyId==new Guid(LoginUserInfo.Attributes["CompanyId"].ToString()))
                 .CheckEqual(Searcher.LocationId, x=>x.LocationId)
+                .CheckEqual(Searcher.isComfire, x => x.isComfire)
                 .Select(x => new ReStock_View
                 {
 				    ID = x.ID,

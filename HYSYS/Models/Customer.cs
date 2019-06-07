@@ -8,6 +8,7 @@ namespace HYSYS.Models
     {
         [Display(Name = "客户编码")]
         [StringLength(5)]
+        [Required(ErrorMessage = "{0}是必填项")]
         public string CustomerCode { get; set; }
 
         [Display(Name = "客户名称")]

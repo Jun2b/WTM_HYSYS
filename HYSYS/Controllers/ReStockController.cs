@@ -4,6 +4,7 @@ using System;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using HYSYS.ViewModels.ReStockVMs;
+using HYSYS.ViewModels.StoreInVMs;
 
 namespace HYSYS.Controllers
 {
@@ -110,11 +111,34 @@ namespace HYSYS.Controllers
         #endregion
 
         #region 详细
-        [ActionDescription("详细")]
+        [ActionDescription("详细/确认")]
         public ActionResult Details(Guid id)
         {
             var vm = CreateVM<ReStockVM>(id);
             return PartialView(vm);
+        }
+        [ActionDescription("详细/确认")]
+        [HttpPost]
+        public ActionResult Details(Guid id, IFormCollection nouse)
+        {
+            var vm = CreateVM<ReStockVM>(id);
+            if (!ModelState.IsValid)
+            {
+                return PartialView(vm);
+            }
+            else
+            {
+                vm.DoComfire();
+                if (!ModelState.IsValid)
+                {
+                    vm.DoReInit();
+                    return PartialView(vm);
+                }
+                else
+                {
+                    return FFResult().CloseDialog().RefreshGridRow(vm.Entity.ID);
+                }
+            }
         }
         #endregion
 

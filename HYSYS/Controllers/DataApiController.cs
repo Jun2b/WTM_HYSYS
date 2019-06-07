@@ -22,6 +22,11 @@ namespace HYSYS.Controllers
             public string ResultCode { get; set; }
             public StoreInPrice sip { get; set; }
         }
+        public class StockReturn
+        {
+            public string ResultCode { get; set; }
+            public Stock stk { get; set; }
+        }
         #region 获取时间价格
         [HttpPost]
         public ActionResult PriceGet()
@@ -109,11 +114,30 @@ namespace HYSYS.Controllers
         //        vml.DoEdit();
         //        return new JsonResult("Succeed");
         //    }
-            
+
         //}
-        
+
 
         //#endregion
-
+        #region 获取库存by库位
+        [HttpPost]
+        public ActionResult StockGet()
+        {
+            var LocationId = Request.Form["LocationId"].ToString();
+            
+            var st = DC.Set<Stock>().Where(x => x.LocationId == new Guid(LocationId)).SingleOrDefault();
+            StockReturn sr = new StockReturn();
+            if (st == null)
+            {
+                sr.ResultCode = "1";
+            }
+            else
+            {
+                sr.ResultCode = "0";
+                sr.stk = st;
+            }
+            return new JsonResult(sr);
+        }
+        #endregion
     }
 }

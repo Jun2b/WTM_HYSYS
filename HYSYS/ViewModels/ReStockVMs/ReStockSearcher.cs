@@ -15,6 +15,8 @@ namespace HYSYS.ViewModels.ReStockVMs
         public List<ComboSelectListItem> AllLocations { get; set; }
         [Display(Name = "仓库库位")]
         public Guid? LocationId { get; set; }
+        [Display(Name = "确认状态")]
+        public Boolean? isComfire { get; set; }
 
         protected override void InitVM()
         {

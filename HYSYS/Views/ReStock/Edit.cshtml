@@ -46,7 +46,16 @@
 </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">
-        <wt:submitbutton />
+        @{
+            if (@Model.Entity.isComfire == false)
+            {
+                <wt:submitbutton />
+            }
+            else
+            {
+                <wt:display default-value="确认后信息无法修改"/>
+            }
+        }
         <wt:closebutton />
     </wt:row>
 </wt:form>
